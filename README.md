@@ -26,6 +26,11 @@ com esse aplicativo usuarios como eu, podem ver detalhes do seu destino turistic
 - **CommunityToolkit**
 - **EntityFrameworkCore**
 - **MVVM** - Padrão de projeto utilizado
+- 
+## Futuras Melhorias
+- Integração com mapas para navegação até as atrações.
+- Suporte a múltiplos idiomas.
+- Notificações sobre eventos em atrações favoritas.
 
 # Desafios ao longo do desenvolvimento
 Durante o desenvolvimento da API tive problemas ao consumir a API por um dispositvo Android, relacionado a CORS e Certificado SSL e com a URL, resolvi de maneira simples
@@ -38,3 +43,9 @@ autorizando o CleartextTraffic do dispositvo e verificando se ele é um emulador
 - **GET /api/Attractions/{id}** - Retorna uma atração pelo id especificado
 - **GET /api/Attractions/{rating}/GetAttractionsByRating** - Retorna uma lista de atrações que possuem um rating igual ou superior do especificado
 - **GET /api/Attractions/GetRecomended** - Retorna uma lista de atrações recomendadas
+  
+## Feedback e Suporte
+Se você encontrar algum problema ou tiver sugestões, por favor, abra uma issue no GitHub ou entre em contato via email: [seuemail@exemplo.com](mailto:seuemail@exemplo.com).
+
+## Licença
+Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
