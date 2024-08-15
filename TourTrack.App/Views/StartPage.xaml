@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TourTrack.App.Views.StartPage"
+          
+             BackgroundColor="Beige"
+             Title="StartPage">
+    <Grid RowDefinitions="70, *">
+        
+        <StackLayout>
+            <Image Source="imagem_teste01" Aspect="AspectFill" Grid.Row="1" VerticalOptions="Fill" HeightRequest="670"/>
+        </StackLayout>
+        
+        <VerticalStackLayout Grid.Row="0" Margin="10" Spacing="5">
+            <Label Text="Let`s go" FontSize="70" FontFamily="JustNoteRegular"/>
+            <Label Text="Explore world enjoy" FontSize="45" FontFamily="AntiquanarBold"/>
+        </VerticalStackLayout>
+        
+        <Border Grid.Row="2" StrokeShape="RoundRectangle 15" Margin="10" WidthRequest="250" VerticalOptions="End" Stroke="Transparent">
+            <VerticalStackLayout Spacing="10">
+                <Button Text="Explore"  VerticalOptions="End" TextColor="Orange" BackgroundColor="White" Clicked="GoToShell"/>
+                <Button Text="Skip" BackgroundColor="Transparent" TextColor="Black"/>
+            </VerticalStackLayout>
+        </Border>
+        
+    </Grid>
+</ContentPage>

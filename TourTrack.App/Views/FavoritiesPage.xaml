@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TourTrack.App.Views.FavoritiesPage"
+             xmlns:vm ="clr-namespace:TourTrack.App.ViewModels"
+             xmlns:behavior="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:Converter="clr-namespace:TourTrack.App.services.Alerts"
+             Title="FavoritiesPage">
+    <ContentPage.BindingContext>
+        <vm:FavoritiesPageViewModel x:Name="vm"/>
+    </ContentPage.BindingContext>
+    <StackLayout>
+        
+        <Border Margin="20" StrokeShape="RoundRectangle 15" HeightRequest="45">
+            <Entry Placeholder="Procurar" Text="{Binding SearchKey}" PlaceholderColor="Gray">
+                <Entry.Behaviors>
+                    <behavior:EventToCommandBehavior Command="{Binding TextSearchCommand}" EventName="TextChanged"/>
+                </Entry.Behaviors>
+            </Entry>
+        </Border>
+        <ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+        <CollectionView EmptyView="Nenhum ponto turistico adicionado"  ItemsSource="{Binding FiltredList}" IsVisible="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Margin="10" StrokeShape="RoundRectangle 10" WidthRequest="150" HeightRequest="200">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference vm}, Path=GoToDetailCommand}" CommandParameter="{Binding .}"/>
+                        </Border.GestureRecognizers>
+                        <Grid RowDefinitions="*, 100">
+                            <StackLayout Margin="10">
+                                <Border StrokeShape="RoundRectangle 10" WidthRequest="130" HeightRequest="110">
+                                    <CollectionView ItemsSource="{Binding Images}" ItemsLayout="HorizontalList">
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Image Source="{Binding Url}" Aspect="Fill"/>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </Border>
+                                <StackLayout Grid.Row="1" Margin="10">
+                                    <Label Text="{Binding Name}" FontSize="17" FontFamily="ArabicMedium" MaxLines="1" />
+                                    <Label Text="{Binding CountryName}" FontSize="8" MaxLines="1"/>
+                                    <StackLayout Orientation="Horizontal" Spacing="5" VerticalOptions="EndAndExpand" Margin="0, 10, 0, 0">
+                                        <Image Source="star_rating" HeightRequest="15"/>
+                                        <Label Text="{Binding Rating}" FontSize="15" FontFamily="ArabicMedium"/>
+                                        <Image Source="money_bill" HeightRequest="15"/>
+                                        <Label Text="{Binding EntryFee}" HeightRequest="15" FontFamily="ArabicMedium" Margin="0, 0, 0, 5"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

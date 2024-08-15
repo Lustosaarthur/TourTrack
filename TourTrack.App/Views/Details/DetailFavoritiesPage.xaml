@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TourTrack.App.Views.Details.DetailFavoritiesPage"
+             xmlns:vm="clr-namespace:TourTrack.App.ViewModels.Details"
+             Title="DetailFavoritiesPage">
+    <ContentPage.BindingContext>
+        <vm:DetailFavoritiesPageViewModel x:Name="vm"/>
+    </ContentPage.BindingContext>
+
+    <AbsoluteLayout>
+        <ScrollView AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+            <Grid>
+                <StackLayout Padding="10" Margin="0, 0, 0, 0">
+                    <Border StrokeShape="RoundRectangle 18">
+                        <CollectionView ItemsSource="{Binding Attraction.Images}" ItemsLayout="HorizontalList">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding Url}" Aspect="Fill" HeightRequest="320"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        
+                    </Border>
+                    <StackLayout Margin="10">
+                        <Label Text="{Binding Attraction.Name}" FontFamily="TtFirsNeueBold" FontSize="27"/>
+                        <StackLayout Orientation="Horizontal" Spacing="5">
+                            <Image Source="location_dot.svg" HeightRequest="20"/>
+                            <Label Text="{Binding Attraction.CountryName}" FontFamily="ArabicMedium" FontSize="20"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" Spacing="10 ">
+                        <Border StrokeShape="RoundRectangle 10" Margin="10" BackgroundColor="#FFFFFF" Stroke="{SolidColorBrush Color=White}">
+                            <StackLayout Margin="10" Spacing="5">
+                                <Image Source="clock_solid" HeightRequest="20"/>
+                                <Label Text="{Binding Attraction.OpeningHours}" TextColor="#F56139"/>
+                            </StackLayout>
+                        </Border>
+                        <Border StrokeShape="RoundRectangle 10" Margin="10" BackgroundColor="#FFFFFF" Stroke="{SolidColorBrush Color=White}">
+                            <StackLayout  Margin="10" Spacing="5">
+                                <Image Source="money_bill" HeightRequest="20"/>
+                                <Label Text="{Binding Attraction.EntryFee}" TextColor="#F56139"/>
+                            </StackLayout>
+                        </Border>
+                        <Border StrokeShape="RoundRectangle 10" Margin="10" BackgroundColor="#FFFFFF" Stroke="{SolidColorBrush Color=White}">
+                            <StackLayout Margin="10" Spacing="5">
+                                <Image Source="star_rating" HeightRequest="20"/>
+                                <Label Text="{Binding Attraction.Rating}" TextColor="#F56139"/>
+                            </StackLayout>
+                        </Border>
+                    </StackLayout>
+                    <StackLayout Margin="10">
+                        <Label Text="{Binding Attraction.Name}" FontFamily="TtFirsNeueBold" FontSize="27"/>
+                        <Label Text="{Binding Attraction.Description}" FontFamily="Arabic Medium" FontSize="15" Margin="0, 5, 0, 0"/>
+                    </StackLayout>
+
+                    <BoxView HeightRequest="40" BackgroundColor="Transparent" />
+                </StackLayout>
+                <Image Margin="10" Source="left_arrow.png" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" HeightRequest="40">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </ScrollView>
+        <Button Text="Remove"
+            BackgroundColor="#F56139"
+            TextColor="White"
+            CornerRadius="5"
+            HeightRequest="40"
+            WidthRequest="150"
+            HorizontalOptions="Center"
+            VerticalOptions="End"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            AbsoluteLayout.LayoutBounds="0.5, 1, AutoSize, AutoSize"
+            Command="{Binding DeleteCommand}"
+            Margin="10"/>
+    </AbsoluteLayout>
+</ContentPage>

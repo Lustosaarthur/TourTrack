@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TourTrack.App.Views.ExplorePage"
+             xmlns:Converter="clr-namespace:TourTrack.App.services.Alerts"
+             xmlns:vm="clr-namespace:TourTrack.App.ViewModels"
+             Title="ExplorePage">
+    <ContentPage.BindingContext>
+        <vm:ExplorePageViewModel x:Name="vm"/>
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <StackLayout Margin="10">
+            <Frame IsVisible="{Binding ErrorMessage}" VerticalOptions="CenterAndExpand" Margin="20">
+                <StackLayout Margin="10">
+                    <Label Text="Parece que você está sem internet!" FontFamily="ArabicMedium" FontSize="25" TextColor="Purple"/>
+                    <Label Text="Verifique sua internet e tente outra vez" FontFamily="ArabicMedium" FontSize="15" TextColor="Gray"/>
+                </StackLayout>
+            </Frame>
+            <ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" 
+           VerticalOptions="CenterAndExpand"  
+           HeightRequest="30" Margin="10"/>
+            <Grid IsVisible="{Binding AllScreen}">
+                <StackLayout IsVisible="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}">
+                    <CollectionView ItemsSource="{Binding ListCountries}" ItemsLayout="HorizontalList">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border StrokeShape="RoundRectangle 10" Margin="5">
+                                    <Label Text="{Binding NameCategory}" Margin="5, 0, 5, 0" FontFamily="ArabicMedium" FontSize="25">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer  Command="{Binding Source={x:Reference vm}, Path=CllViewSwicthCommand}" CommandParameter="{Binding Parameter}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <StackLayout Orientation="Horizontal" Spacing="5">
+                        <Label Text="Best of" FontFamily="ArabicMedium" FontSize="30"/>
+                        <Label Text="{Binding ParameterCountry}" FontFamily="ArabicMedium" FontSize="30"/>
+                    </StackLayout>
+                    <CollectionView IsVisible="{Binding CllIsVisible}" ItemsSource="{Binding BestAttractionsOfCountry}" ItemsLayout="HorizontalList">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border StrokeShape="RoundRectangle 15" Margin="10" WidthRequest="180" HeightRequest="180">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={x:Reference vm}, Path=GoToDetailCommand}" CommandParameter="{Binding .}"/>
+                                    </Border.GestureRecognizers>
+                                    <Grid RowDefinitions="*, 100">
+                                        <StackLayout Margin="10" >
+                                            <Border StrokeShape="RoundRectangle 10" HeightRequest="120" WidthRequest="130">
+                                                <CollectionView ItemsSource="{Binding Images}" ItemsLayout="HorizontalList">
+                                                    <CollectionView.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Image Source="{Binding Url}" Aspect="Fill"/>
+                                                        </DataTemplate>
+                                                    </CollectionView.ItemTemplate>
+                                                </CollectionView>
+                                            </Border>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="1" Margin="10" Spacing="3" VerticalOptions="EndAndExpand">
+                                            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="15" MaxLines="1"/>
+                                            <Label Text="{Binding CountryName}" FontSize="10" MaxLines="1"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <ActivityIndicator IsVisible="{Binding SwitchCll}" IsRunning="{Binding SwitchCll}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="30" Margin="10"/>
+                    <Label Text="Best attractions" FontFamily="ArabicMedium" FontSize="30"/>
+                    <CollectionView ItemsSource="{Binding BestAttractions}" ItemsLayout="HorizontalList">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border StrokeShape="RoundRectangle 10" Margin="10" WidthRequest="180" HeightRequest="180">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={x:Reference vm}, Path=GoToDetailCommand}" CommandParameter="{Binding .}"/>
+                                    </Border.GestureRecognizers>
+                                    <Grid RowDefinitions="*, 100">
+                                        <StackLayout Margin="10" >
+                                            <Border StrokeShape="RoundRectangle 13" HeightRequest="120" WidthRequest="130">
+                                                <CollectionView ItemsSource="{Binding Images}" ItemsLayout="HorizontalList">
+                                                    <CollectionView.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Image Source="{Binding Url}" Aspect="Fill"/>
+                                                        </DataTemplate>
+                                                    </CollectionView.ItemTemplate>
+                                                </CollectionView>
+                                            </Border>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="1" Margin="10" Spacing="3" VerticalOptions="EndAndExpand">
+                                            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="15" MaxLines="1"/>
+                                            <Label Text="{Binding CountryName}" FontSize="10" MaxLines="1"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <Label Text="Maybe you like" FontFamily="ArabicMedium" FontSize="30"/>
+                    <CollectionView ItemsSource="{Binding ListAttractionsMby}" ItemsLayout="HorizontalList">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border StrokeShape="RoundRectangle 10" Margin="10" WidthRequest="180" HeightRequest="180">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={x:Reference vm}, Path=GoToDetailCommand}" CommandParameter="{Binding .}"/>
+                                    </Border.GestureRecognizers>
+                                    <Grid RowDefinitions="*, 100">
+                                        <StackLayout Margin="10" >
+                                            <Border StrokeShape="RoundRectangle 13" HeightRequest="120" WidthRequest="130">
+                                                <CollectionView ItemsSource="{Binding Images}" ItemsLayout="HorizontalList">
+                                                    <CollectionView.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Image Source="{Binding Url}" Aspect="Fill"/>
+                                                        </DataTemplate>
+                                                    </CollectionView.ItemTemplate>
+                                                </CollectionView>
+                                            </Border>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="1" Margin="10" Spacing="3" VerticalOptions="EndAndExpand">
+                                            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="15" MaxLines="1"/>
+                                            <Label Text="{Binding CountryName}" FontSize="10" MaxLines="1"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

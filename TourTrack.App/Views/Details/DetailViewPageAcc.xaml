@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TourTrack.App.Views.Details.DetailViewPageAcc"
+             xmlns:vm="clr-namespace:TourTrack.App.ViewModels.Details"
+             Title="DetailViewPageAcc">
+    <ContentPage.BindingContext>
+        <vm:DetailViewPageAccViewModel x:Name="vm"/>
+    </ContentPage.BindingContext>
+
+    <AbsoluteLayout>
+        <ScrollView AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+            <Grid>
+                <StackLayout Padding="10" Margin="0, 0, 0, 0">
+                    <Border StrokeShape="RoundRectangle 18">
+                        <Image Source="https://res.cloudinary.com/du5jifpgg/image/upload/t_opengraph_image/Surcharge-APIDAE/Musee_du_Louvre_ete-2023.jpg" Aspect="Fill" HeightRequest="320"/>
+                    </Border>
+                    <StackLayout Margin="10">
+                        <Label Text="{Binding Accommodation.Name}" FontFamily="TtFirsNeueBold" FontSize="27"/>
+                        <StackLayout Orientation="Horizontal" Spacing="10 ">
+                            <StackLayout Orientation="Horizontal" Spacing="5">
+                                <Image Source="star_rating" HeightRequest="20"/>
+                                <Label Text="{Binding Accommodation.Rating}" FontFamily="ArabicMedium" FontSize="20"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="5">
+                                <Image Source="money_bill" HeightRequest="20"/>
+                                <Label Text="{Binding Accommodation.PricePerNight}" FontFamily="ArabicMedium" FontSize="20"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                    <BoxView HeightRequest="1" Color="Gray"/>
+                    <StackLayout Padding="10">
+                        <Label Text="{Binding Accommodation.Name}" FontFamily="ArabicMedium" FontSize="20"/>
+                        <Label Text="{Binding Accommodation.Country}" FontFamily="ArabicMedium" FontSize="18"/>
+                    </StackLayout>
+                    <BoxView HeightRequest="1"  Color="Gray"/>
+                    <StackLayout Margin="10" Spacing="10">
+                        <Label Text="Amenities" FontFamily="TtFirsNeueBold" FontSize="27"/>
+                        <CollectionView ItemsSource="{Binding Amenities}" ItemsLayout="HorizontalList">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border StrokeShape="RoundRectangle 7" BackgroundColor="{StaticResource Gray100}" Margin="5" HeightRequest="40">
+                                        <Label Text="{Binding}" Margin="10" FontFamily="ArabicMedium" FontSize="18"/>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                    <BoxView HeightRequest="1"  Color="Gray"/>
+                    <StackLayout >
+                            <StackLayout Orientation="Horizontal" Spacing="4" Margin="5">
+                                <Image Source="location_dot" HeightRequest="20" />
+                                <Label Text="Self check-in"  FontFamily="ArabicMedium" FontSize="20"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="5" Padding="20, 0, 0, 0">
+                                <Label Text="{Binding Accommodation.CheckInTime}"  FontSize="13"/>
+                                <Label Text="-"/>
+                                <Label Text="{Binding Accommodation.CheckOutTime}"  FontSize="13"/>
+                            </StackLayout>
+                            <StackLayout Margin="10">
+                                <Label Text="Great check-in experience" FontFamily="ArabicMedium" FontSize="25"/>
+                            <Label Text="100% of recent guests have the check-in in process a 5 star rating" FontSize="10"/>
+                        </StackLayout>
+                        </StackLayout>
+                    <BoxView HeightRequest="70" BackgroundColor="Transparent" />
+                </StackLayout>
+                <Image Margin="10" Source="left_arrow.png" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" HeightRequest="40">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </ScrollView>
+        <Button Text="Add to favorities"
+            BackgroundColor="#F56139"
+            TextColor="White"
+            CornerRadius="5"
+            HeightRequest="40"
+            WidthRequest="150"
+            HorizontalOptions="Center"
+            VerticalOptions="End"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            AbsoluteLayout.LayoutBounds="0.5, 1, AutoSize, AutoSize"
+            Command="{Binding AddInDataBaseCommand}"
+            Margin="10"/>
+    </AbsoluteLayout>
+</ContentPage>
