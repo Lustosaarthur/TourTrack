@@ -1,4 +1,11 @@
 ## TourTrack - App de pontos turísticos
+
+## Sumário
+1. [Descrição](#tourtrack---app-de-pontos-turísticos)
+2. [Tecnologias utilizadas](#tecnologias-utilizadas)
+3. [Desafios ao longo do desenvolvimento](#desafios-ao-longo-do-desenvolvimento)
+4. [API EndPoints importantes](#api-endpoints-importantes)
+   
 Este é um aplicativo que oferece a possibilidade de explorar vários pontos turísticos ao redor do mundo. O app fornece informações detalhadas sobre cada atração, como:
 
 - Localização: Coordenadas e endereço.
@@ -27,8 +34,8 @@ autorizando o CleartextTraffic do dispositvo e verificando se ele é um emulador
 
 # API EndPoints importantes
 
-- **GET /api/Attractions**
-- **GET /api/Attractions/{CountryId}/GetAttractionByCountry**
-- **GET /api/Attractions/{id}**
-- **GET /api/Attractions/{rating}/GetAttractionsByRating**
-- **GET /api/Attractions/GetRecomended**
+- **GET /api/Attractions** - Retorna uma lista completa de atrações
+- **GET /api/Attractions/{CountryId}/GetAttractionByCountry** - Retorna uma lista de atrações por país, cada atração está ligada a um pais pelo id do País
+- **GET /api/Attractions/{id}** - Retorna uma atração pelo id especificado
+- **GET /api/Attractions/{rating}/GetAttractionsByRating** - Retorna uma lista de atrações que possuem um rating igual ou superior do especificado
+- **GET /api/Attractions/GetRecomended** - Retorna uma lista de atrações recomendadas
