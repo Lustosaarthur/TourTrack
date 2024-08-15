@@ -1,7 +1,14 @@
 ## TourTrack - App de pontos turísticos
-Esse é um app que oferece a possibilidade de explorar vários pontos turisticos ao redor do mundo todo, podendo ver detalhes como:
-localização, horário de abertura, valor de entrada, imagens e uma breve descrição, para manipular os dados das atrações eu criei a API
-utilizando EntityFramework com SQLserver
+Este é um aplicativo que oferece a possibilidade de explorar vários pontos turísticos ao redor do mundo. O app fornece informações detalhadas sobre cada atração, como:
+
+- Localização: Coordenadas e endereço.
+- Horário de abertura: Dias e horários em que a atração está disponível para visitação.
+- Valor de entrada: Preço dos ingressos.
+- Imagens: Fotos das atrações para visualização.
+- Descrição: Uma breve descrição para contextualizar a história ou importância da atração.
+
+Ao todo demorei cerca de 20 a 30 dias pra criação do projeto + Api, gostei muito de fazer, pois é um projeto pessoal meu, e sou apaixonado por viagens e tudo que seja relacionado,
+com esse aplicativo usuarios como eu, podem ver detalhes do seu destino turistico e também descobrir novos lugares que eles queiram conhecer
 
 # Tecnologias utilizadas
 - **.NET MAUI** - Framewkork
@@ -12,3 +19,8 @@ utilizando EntityFramework com SQLserver
 - **ASP.NET Core**
 - **CommunityToolkit**
 - **EntityFrameworkCore**
+- **MVVM** - Padrão de projeto utilizado
+
+  # Desafios ao longo do desenvolvimento
+  Durante o desenvolvimento da API tive problemas ao consumir a API por um dispositvo Android, relacionado a CORS e Certificado SSL e com a URL, resolvi de maneira simples
+  autorizando o CleartextTraffic do dispositvo e verificando se ele é um emulador ou um dispositivo físico, durante o desenvolvimento do App
