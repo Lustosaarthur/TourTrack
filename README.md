@@ -1,11 +1,10 @@
-## TourTrack - App de pontos turísticos
-
 ## Sumário
 1. [Descrição](#tourtrack---app-de-pontos-turísticos)
 2. [Tecnologias utilizadas](#tecnologias-utilizadas)
 3. [Desafios ao longo do desenvolvimento](#desafios-ao-longo-do-desenvolvimento)
 4. [API EndPoints importantes](#api-endpoints-importantes)
-   
+
+## TourTrack - App de pontos turísticos  
 Este é um aplicativo que oferece a possibilidade de explorar vários pontos turísticos ao redor do mundo. O app fornece informações detalhadas sobre cada atração, como:
 
 - Localização: Coordenadas e endereço.
