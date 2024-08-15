@@ -27,14 +27,15 @@ com esse aplicativo usuarios como eu, podem ver detalhes do seu destino turistic
 - **EntityFrameworkCore**
 - **MVVM** - Padrão de projeto utilizado
 - 
-## Futuras Melhorias
-- Integração com mapas para navegação até as atrações.
-- Suporte a múltiplos idiomas.
-- Notificações sobre eventos em atrações favoritas.
 
 # Desafios ao longo do desenvolvimento
 Durante o desenvolvimento da API tive problemas ao consumir a API por um dispositvo Android, relacionado a CORS e Certificado SSL e com a URL, resolvi de maneira simples
 autorizando o CleartextTraffic do dispositvo e verificando se ele é um emulador ou um dispositivo físico, durante o desenvolvimento do App
+
+## Futuras Melhorias
+- Integração com mapas para navegação até as atrações.
+- Suporte a múltiplos idiomas.
+- Notificações sobre eventos em atrações favoritas.
 
 # API EndPoints importantes
 
